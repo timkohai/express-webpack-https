@@ -49,3 +49,32 @@ var app = express()
 
 var server = https.createServer(certOptions, app).listen(443)
 ```
+
+
+
+
+## How to use Cheetah JS SDK
+
+#### Initialize Cheetah JS SDK
+```js
+window.cheetahAsyncInit = function() {
+    Stellar.init({
+        "clientUrl": "https://vans-staging.demostellar.com",
+        "clientId": ["client_id","client_secret"],
+    })
+}
+```
+
+### ES6 
+```
+import Cheetah from "cheetah-js-sdk"
+
+// Initialize JS SDK
+Cheetah.init({
+    "clientUrl": "https://vans-staging.demostellar.com",
+    "clientId": ["client_id","client_secret"]
+})
+
+// initialize challenges
+Cheetah.ui.challenges()
+```

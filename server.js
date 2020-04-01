@@ -1,18 +1,25 @@
 const fs = require('fs');
 const path = require('path')
-const express = require('express');
 const http = require('http');
 const https = require('https');
+
+const express = require('express');
+const webpack = require('webpack');
+
+
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const config = require('./webpack.config.js');
+const compiler = webpack(config);
+
+
 
 
 const httpPort = 3001;
 const httpsPort = 3002;
 const app = express()
 
-console.log(path.resolve('server.key'))
-
-var key = fs.readFileSync(path.resolve('server.key'))
-var cert = fs.readFileSync(path.resolve('server.crt'))
+var key = fs.readFileSync(path.resolve('certificates/keys/server.key'))
+var cert = fs.readFileSync(path.resolve('certificates/keys/server.crt'))
 
 var credentials = {
   key: key,
@@ -20,9 +27,14 @@ var credentials = {
 };
 
 //GET home route
-app.get('/', (req, res) => {
-   res.send('Hello World from domain1.demostellar.com');
-});
+// app.get('/', (req, res) => {
+//    res.send('Hello World from main.demoapp.com');
+// });
+
+
+app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath
+}));
 
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
