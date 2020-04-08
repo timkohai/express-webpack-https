@@ -1,25 +1,15 @@
-'use strict';
-
-function groupBy(arr, key) {
+function groupBy (arr, key) {
   return arr.reduce((acc, i) => {
-    (acc[i[key]] = acc[i[key]] || []).push(i);
-    return acc;
-  }, {});
+    (acc[i[key]] = acc[i[key]] || []).push(i)
+    return acc
+  }, {})
 }
 
-
-const sqrt = Math.sqrt;
-
-function square(x) {
-    return x * x;
-}
-
-function diag(x, y) {
-    return sqrt(square(x) + square(y));
+function square (x) {
+  return x * x
 }
 
 export {
-    groupBy,
-    square,
-    diag
+  groupBy,
+  square
 }
