@@ -13,7 +13,7 @@ module.exports = {
     devtool: 'inline-source-map',
     devServer: {
         // host: '0.0.0.0',
-        host: 'main.demoapp.com',
+        host: 'client.demoapp.com',
         contentBase: path.join(__dirname, 'build'),
         open: true,
         port: 3002,

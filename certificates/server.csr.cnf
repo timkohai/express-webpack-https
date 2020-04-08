@@ -11,4 +11,4 @@ L=Manila
 O=DeveloperOrg
 OU=IT
 emailAddress=admin@demoapp.com
-CN = main.demoapp.com
+CN = client.demoapp.com
